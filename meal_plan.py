@@ -60,10 +60,12 @@ prompt_template_meal = PromptTemplate(
     - Time Until Expiry (Days): {days_to_expiry}
     
     2. The plan should be optimized to minimize food waste by prioritizing items that expire soon.
-    3. Double check your responses before finalizing the meal plan.
-    4. Output the plan in JSON format with days (monday, tuesday, wednesday, etc.) as keys and each day containing 4 meals (breakfast, lunch, snacks, dinner).
-    5. Make sure that the response does not contain any preamble. Return JSON text only.
-    """ )
+    3. Strictly do not repeat the exact same meals on consecutive days.
+    4. Double check your responses before finalizing the meal plan.
+    5. Output the plan in JSON format with days (monday, tuesday, wednesday, etc.) as keys and each day containing 4 meals (breakfast, lunch, snacks, dinner).
+    6. Make sure that the response does not contain any preamble. Return JSON text only, no markdown formatting, no triple backticks, no explanations.
+    """
+)
 
 prompt_template_recipe = PromptTemplate(
     input_variables=["meal", "item_list", "days_to_expiry"],
