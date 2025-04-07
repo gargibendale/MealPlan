@@ -58,13 +58,18 @@ prompt_template_meal = PromptTemplate(
     - Preferred Cuisine: {cuisine}
     - Available Ingredients: {item_list}
     - Time Until Expiry (Days): {days_to_expiry}
-    
+
     2. The plan should be optimized to minimize food waste by prioritizing items that expire soon.
     3. Strictly do not repeat the exact same meals on consecutive days.
-    4. Double check your responses before finalizing the meal plan.
-    5. Output the plan in JSON format with days (monday, tuesday, wednesday, etc.) as keys and each day containing 4 meals (breakfast, lunch, snacks, dinner).
-    6. Make sure that the response does not contain any preamble. Return JSON text only, no markdown formatting, no triple backticks, no explanations.
-    """
+    4. Double-check your responses before finalizing the meal plan.
+    5. For each meal (breakfast, lunch, snacks, dinner), provide both the recipe name and the *detailed step-by-step cooking instructions*.
+    6. Output the plan in JSON format with days (monday, tuesday, wednesday, etc.) as keys and each day containing 4 meals (breakfast, lunch, snacks, dinner). For each meal, include:
+       - "recipe_name": (name of the dish)
+       - "instructions": (step-by-step preparation instructions in detail)
+       - "how_it_helps": (how the meal helps my dietary preferences, health conditions and goals)
+       - "calories": (total calories along with how many calories each item contributes per serve)
+    7. Make sure that the response does not contain any preamble. Return JSON text only, no markdown formatting, no triple backticks, no explanations.
+    """
 )
 
 prompt_template_recipe = PromptTemplate(
